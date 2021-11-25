@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export default styled.button<props>`
+export default styled.button`
   background: ${props => props.outlined ? 'transparent' : 'var(--green)'};
   color: var(--black);
   border: ${props => props.outlined ? '1px solid var(--gray-line)' : 'none'};

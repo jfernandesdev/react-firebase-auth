@@ -7,13 +7,13 @@ export const Header = () => {
     <Container>
         <Logo />
 
-        <InfoUser
-          avatar='https://github.com/jfernandesdev.png'
-          name='Jeferson Fernandes'
-          email='jfernandes.dev@gmail.com'
-        />
-
         <Flex>
+          <InfoUser
+            avatar='https://github.com/jfernandesdev.png'
+            name='Jeferson Fernandes'
+            email='jfernandes.dev@gmail.com'
+          />
+          
           <Button>Sair</Button>
         </Flex>
     </Container>
