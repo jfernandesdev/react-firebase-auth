@@ -21,7 +21,7 @@ export default createGlobalStyle`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Poppins, Segoe UI, Roboto, sans-serif;
+    font-family: 'Poppins', Segoe UI, Roboto, sans-serif;
   }
 
   body, input, button, textarea {
