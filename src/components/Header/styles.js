@@ -1,16 +1,22 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 8%;
+  justify-content: flex-end;
+  padding: 30px 8%;
+
+  @media(max-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 export const Flex = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-top: 10px;
 `;
 
 export const Button = styled.button`

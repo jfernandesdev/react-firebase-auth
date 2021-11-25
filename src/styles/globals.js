@@ -24,6 +24,10 @@ export default createGlobalStyle`
     font-family: 'Poppins', Segoe UI, Roboto, sans-serif;
   }
 
+  html, body {
+    overflow-x: hidden;
+  }
+
   body, input, button, textarea {
     font: 400 16px 'Poppins', sans-serif;
     

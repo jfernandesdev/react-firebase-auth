@@ -3,9 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   background: #1B232A;
-  width: 420px;
+  max-width: 420px;
+  min-width: 420px;
   height: 100vh;
-  padding: 15px 40px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -25,6 +26,7 @@ export const Container = styled.div`
 
   @media(max-width: 768px) {
     width: 100vw;
+    max-width: 100%;
     height: 35vw;
     padding: 10px;
   }
@@ -32,11 +34,13 @@ export const Container = styled.div`
 
 export const Image = styled.img`
   animation: float 10s ease-in-out infinite;
+  margin-top: 100px;
 
   @media(max-width: 768px) {
     position: absolute;
-    width: 35%;
-    top: 30px;
-    right: 10px;
+    width: 30%;
+    top: 15%;
+    right: 20%;
+    margin-top: 0;
   }
 `;
