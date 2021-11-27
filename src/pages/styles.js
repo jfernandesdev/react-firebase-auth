@@ -68,7 +68,7 @@ export const Center = styled.div`
 `;
 
 export const Text = styled.div`
-  padding: 6% 10%;
+  padding: 6% 7%;
   max-width: 65%;
   
   p {

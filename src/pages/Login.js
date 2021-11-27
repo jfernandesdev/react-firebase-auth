@@ -11,9 +11,26 @@ import { ContainerForm, Flex, Center } from './styles';
 
 const Login = () => {
 
-  const handleSubmit = () => {
-    alert('Form enviado!');
-  }
+  const [state, setState] = useState({
+    email: "",
+    password: "",
+  });
+  
+  const { email, password } = state;
+
+  const handleChange = (e) => {
+    let {name, value} = e.target;
+    setState({...state, [name]: value});
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setState({
+      email: '',
+      password: '',
+    })
+  };
 
   return (
     <ContainerForm>
@@ -29,6 +46,8 @@ const Login = () => {
             type='email' 
             name='email' 
             placeholder='E-mail' 
+            onChange={handleChange}
+            value={email}
             required 
           />
 
@@ -36,6 +55,8 @@ const Login = () => {
             type='password' 
             name='password' 
             placeholder='Senha' 
+            onChange={handleChange}
+            value={password}
             required 
           />
 

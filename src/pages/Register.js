@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
 import { AsideBannerSpace } from '../components/AsideBannerSpace';
 import { ContainerForm, Center } from './styles';
 
@@ -6,13 +8,54 @@ import { SocialButtons } from '../components/SocialButtons';
 import { Form, Title, Input, Separator } from '../components/Form';
 import Button from '../components/Button';
 
+import { registerInitiate } from '../redux/actions';
+
 const Register = () => {
+  const [state, setState] = useState({
+    name: "",
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
+
+  const {currentUser} = useSelector((state) => state.user);
+  
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(currentUser) {
+      navigate('/');
+    }
+  }, [currentUser, navigate]);
+
+  const dispatch = useDispatch();
+  const {name, email, password, passwordConfirm} = state;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(password !== passwordConfirm){
+      return;
+    }
+    dispatch(registerInitiate(email, password, name));
+    setState({
+      name: "",
+      email: "",
+      password: "",
+      passwordConfirm: "",
+    })
+  };
+
+  const handleChange = (e) => {
+    let {name, value} = e.target;
+    setState({...state, [name]: value});
+  };
+
   return (
     <ContainerForm>
      <AsideBannerSpace image='./astronaut-register.svg' />
 
      <Center>
-        <Form action=''>
+        <Form onSubmit={handleSubmit}>
           <Title>Criar conta com</Title>
           <SocialButtons />
           <Separator> - ou - </Separator>
@@ -21,6 +64,8 @@ const Register = () => {
             type='text'
             name='name'
             placeholder='Nome completo'
+            onChange={handleChange}
+            value={name}
             required
           />
 
@@ -28,6 +73,8 @@ const Register = () => {
             type='email'
             name='email'
             placeholder='E-mail'
+            onChange={handleChange}
+            value={email}
             required
           />
 
@@ -35,18 +82,22 @@ const Register = () => {
             type='password'
             name='password'
             placeholder='Senha'
+            onChange={handleChange}
+            value={password}
             required
           />
 
           <Input 
             type='password'
-            name='repeat-password'
+            name='passwordConfirm'
             placeholder='Repetir a senha'
+            onChange={handleChange}
+            value={passwordConfirm}
             required
           />
 
           <Button type='submit'>Criar conta</Button>
-          <span>Já tem um conta? <a href='/login'>Login</a></span>
+          <span>Já tem um conta? <Link to='/login'><a>Login</a></Link></span>
         </Form>
       </Center>
     </ContainerForm>
