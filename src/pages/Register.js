@@ -32,7 +32,7 @@ const Register = () => {
   }, [currentUser, history]);
 
   const dispatch = useDispatch();
-  const {name, email, password, passwordConfirm} = state;
+  const {displayName, email, password, passwordConfirm} = state;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,11 +49,11 @@ const Register = () => {
       return;
     }
     
-    dispatch(registerInitiate(email, password, name));
+    dispatch(registerInitiate(email, password, displayName));
 
     if(!error) {
       setState({
-        name: "",
+        displayName: "",
         email: "",
         password: "",
         passwordConfirm: "",
@@ -78,10 +78,10 @@ const Register = () => {
 
           <Input 
             type='text'
-            name='name'
+            name='displayName'
             placeholder='Nome completo'
             onChange={handleChange}
-            value={name}
+            value={displayName}
             required
           />
 

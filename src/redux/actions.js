@@ -20,14 +20,14 @@ const registerFail = (error) => ({
   payload: error,
 });
 
-export const registerInitiate = (email, password, name) => {
+export const registerInitiate = (email, password, displayName) => {
   return function (dispatch) {
     dispatch(registerStart());
     auth
     .createUserWithEmailAndPassword(email, password)
     .then(({user}) => {
       user.updateProfile({
-        name
+        displayName
       });
       dispatch(registerSuccess(user));
     })
@@ -83,6 +83,12 @@ export const loginInitiate = (email, password) => {
     });
   }
 }
+
+// functions for set user
+export const setUser = (user) => ({
+  type: types.SET_USER,
+  payload: user,
+});
 
 // functions for logout
 const logoutStart = () => ({

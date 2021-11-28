@@ -8,6 +8,7 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch(action.type) {
+    //if the status is start
     case types.REGISTER_START: 
     case types.LOGIN_START:
     case types.LOGOUT_START:
@@ -15,7 +16,7 @@ const userReducer = (state = initialState, action) => {
         ...state,
         loading: true,  
       };
-
+    // if the status is success
     case types.REGISTER_SUCCESS:
     case types.LOGIN_SUCCESS:
       return {
@@ -30,6 +31,14 @@ const userReducer = (state = initialState, action) => {
         currentUser: null,
       };
 
+    case types.SET_USER:
+      return {
+        ...state,
+        loading: false,
+        currentUser: action.payload,
+      };
+
+    //if the status is fail
     case types.REGISTER_FAIL:
     case types.LOGIN_FAIL:
     case types.LOGOUT_FAIL:
@@ -38,7 +47,7 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
-
+    //if is default
     default:
       return state;
   }
