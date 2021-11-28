@@ -63,3 +63,30 @@ export const loginInitiate = (email, password) => {
     });
   }
 }
+
+// functions for logout
+const logoutStart = () => ({
+  type: types.LOGOUT_START,
+});
+
+const logoutSuccess = () => ({
+  type: types.LOGOUT_SUCCESS,
+});
+
+const logoutFail = (error) => ({
+  type: types.LOGOUT_FAIL,
+  payload: error,
+});
+
+export const logoutInitiate = () => {
+  return function (dispatch) {
+    dispatch(logoutStart());
+    auth
+      .signOut()
+      .then((resp) => dispatch(logoutSuccess()))
+    .catch((error) => {
+      dispatch(logoutFail(error.message));
+      alert(error.message);
+    });
+  }
+}

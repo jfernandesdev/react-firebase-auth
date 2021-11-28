@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { AsideBannerSpace } from '../components/AsideBannerSpace';
 import { ContainerForm, Center } from './styles';
 
@@ -20,13 +20,13 @@ const Register = () => {
 
   const {currentUser} = useSelector((state) => state.user);
   
-  const navigate = useNavigate();
+  const history = useHistory();
 
   useEffect(() => {
     if(currentUser) {
-      navigate('/');
+      history.push('/');
     }
-  }, [currentUser, navigate]);
+  }, [currentUser, history]);
 
   const dispatch = useDispatch();
   const {name, email, password, passwordConfirm} = state;

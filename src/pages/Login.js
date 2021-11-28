@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 
 import { AsideBannerSpace } from '../components/AsideBannerSpace';
 import { SocialButtons } from '../components/SocialButtons';
@@ -20,13 +20,13 @@ const Login = () => {
   const { email, password } = state;
   const { currentUser } = useSelector((state) => state.user);
   
-  const navigate = useNavigate();
+  const history = useHistory();
   
   useEffect(() => {
     if(currentUser) {
-      navigate('/');
+      history.push('/');
     }
-  }, [currentUser, navigate]);
+  }, [currentUser, history]);
 
   const dispatch = useDispatch();
 
