@@ -1,5 +1,9 @@
 import * as types from './actionTypes';
 import { auth } from '../firebase';
+import { verifyErroCode } from '../utils/firebase-message';
+
+import { toast } from 'react-toastify';
+
 
 // functions for registration
 const registerStart = () => ({
@@ -28,8 +32,16 @@ export const registerInitiate = (email, password, name) => {
       dispatch(registerSuccess(user));
     })
     .catch((error) => {
-      dispatch(registerFail(error.message));
-      alert(error.message);
+      dispatch(registerFail(error.code));
+      toast.error(verifyErroCode(error.code), {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     });
   }
 } 
@@ -58,8 +70,16 @@ export const loginInitiate = (email, password) => {
       dispatch(loginSuccess(user));
     })
     .catch((error) => {
-      dispatch(loginFail(error.message));
-      alert(error.message);
+      dispatch(loginFail(error.code));
+      toast.error(verifyErroCode(error.code), {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     });
   }
 }
@@ -86,7 +106,15 @@ export const logoutInitiate = () => {
       .then((resp) => dispatch(logoutSuccess()))
     .catch((error) => {
       dispatch(logoutFail(error.message));
-      alert(error.message);
+      toast.error(verifyErroCode(error.code), {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     });
   }
 }

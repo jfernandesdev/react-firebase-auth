@@ -11,6 +11,9 @@ import { ContainerForm, Flex, Center } from './styles';
 
 import { loginInitiate } from '../redux/actions';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Login = () => {
   const [state, setState] = useState({
     email: "",
@@ -18,7 +21,7 @@ const Login = () => {
   });
   
   const { email, password } = state;
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, error } = useSelector((state) => state.user);
   
   const history = useHistory();
   
@@ -43,10 +46,13 @@ const Login = () => {
     }
 
     dispatch(loginInitiate(email, password));
-    setState({
-      email: "",
-      password: "",
-    })
+
+    if(!error) {
+      setState({
+        email: "",
+        password: "",
+      })
+    }
   };
 
   return (
@@ -87,9 +93,11 @@ const Login = () => {
           </WrapWithSpace>
 
           <Button type='submit'>Entrar</Button>
-          <span>Não tem uma conta? <Link to='/register'><a>Registrar</a></Link></span>  
+          <span>Não tem uma conta? <Link to='/register'><a>Registrar</a></Link></span> 
         </Form>
       </Center>
+
+      <ToastContainer />
     </ContainerForm>
   )
 }

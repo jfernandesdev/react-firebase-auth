@@ -10,6 +10,9 @@ import Button from '../components/Button';
 
 import { registerInitiate } from '../redux/actions';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Register = () => {
   const [state, setState] = useState({
     name: "",
@@ -18,7 +21,7 @@ const Register = () => {
     passwordConfirm: "",
   });
 
-  const {currentUser} = useSelector((state) => state.user);
+  var {currentUser, error} = useSelector((state) => state.user);
   
   const history = useHistory();
 
@@ -34,15 +37,28 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(password !== passwordConfirm){
+      toast.error('As senhas não coincidem! Garanta que as senhas foram confirmadas corretamente', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return;
     }
+    
     dispatch(registerInitiate(email, password, name));
-    setState({
-      name: "",
-      email: "",
-      password: "",
-      passwordConfirm: "",
-    })
+
+    if(!error) {
+      setState({
+        name: "",
+        email: "",
+        password: "",
+        passwordConfirm: "",
+      })
+    } 
   };
 
   const handleChange = (e) => {
@@ -100,6 +116,8 @@ const Register = () => {
           <span>Já tem um conta? <Link to='/login'><a>Login</a></Link></span>
         </Form>
       </Center>
+
+      <ToastContainer />
     </ContainerForm>
   )
 }
