@@ -1,15 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Flex } from '../../pages/styles';
 import Button from '../Button';
 
+import { googleSignInInitiate, facebookSignInInitiate } from '../../redux/actions';
+
 export const SocialButtons = () => {
-  
+  const dispatch = useDispatch();
+
   const handleGoogleSignIn = () => {
-    alert('Botão google clicado!');
+    dispatch(googleSignInInitiate());
   }
 
   const handleFacebookSignIn = () => {
-    alert('Botão facebook clicado!');
+    dispatch(facebookSignInInitiate());
   }
 
   return (

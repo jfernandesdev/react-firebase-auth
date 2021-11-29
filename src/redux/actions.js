@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { auth } from '../firebase';
+import { auth, googleAuthProvider, facebookAuthProvider } from '../firebase';
 import { verifyErroCode } from '../utils/firebase-message';
 
 import { toast } from 'react-toastify';
@@ -122,5 +122,81 @@ export const logoutInitiate = () => {
         progress: undefined,
       });
     });
+  }
+}
+
+//login functions using google
+const googleSignInStart = () => ({
+  type: types.GOOGLE_SIGN_IN_START,
+});
+
+const googleSignInSuccess = (user) => ({
+  type: types.GOOGLE_SIGN_IN_SUCCESS,
+  payload: user,
+});
+
+const googleSignInFail = (error) => ({
+  type: types.GOOGLE_SIGN_IN_FAIL,
+  payload: error,
+});
+
+export const googleSignInInitiate = () => {
+  return function (dispatch) {
+    dispatch(googleSignInStart());
+    auth
+      .signInWithPopup(googleAuthProvider)
+      .then(({ user }) => {
+        dispatch(googleSignInSuccess(user));
+      })
+      .catch((error) => {
+        dispatch(googleSignInFail(error.message));
+        toast.error(verifyErroCode(error.code), {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  }
+}
+
+//login functions using facebook
+const facebookSignInStart = () => ({
+  type: types.FACEBOOK_SIGN_IN_START,
+});
+
+const facebookSignInSuccess = (user) => ({
+  type: types.FACEBOOK_SIGN_IN_SUCCESS,
+  payload: user,
+});
+
+const facebookSignInFail = (error) => ({
+  type: types.FACEBOOK_SIGN_IN_FAIL,
+  payload: error,
+});
+
+export const facebookSignInInitiate = () => {
+  return function (dispatch) {
+    dispatch(facebookSignInStart());
+    auth
+      .signInWithPopup(facebookAuthProvider)
+      .then(({ user }) => {
+        dispatch(facebookSignInSuccess(user));
+      })
+      .catch((error) => {
+        dispatch(facebookSignInFail(error.message));
+        toast.error(verifyErroCode(error.code), {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   }
 }
