@@ -23,7 +23,19 @@ Projeto Web desenvolvido para fins didáticos. TEMA: 'Fluxo de autenticação: C
 
 ### Desktop (screenshot):
 
+| Login                                                                                                                                    | Register                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/jfernandesdev/react-firebase-auth/blob/6e18ff299451f20fd2813fa3b5bc84d5dcce0317/public/layout/login.png" /> | <img src="https://github.com/jfernandesdev/react-firebase-auth/blob/6e18ff299451f20fd2813fa3b5bc84d5dcce0317/public/layout/register.png" /> |
+
+| Reset Password                                                                                                                                    | Home (logged in user)                                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/jfernandesdev/react-firebase-auth/blob/6e18ff299451f20fd2813fa3b5bc84d5dcce0317/public/layout/reset-password.png" /> | <img src="https://github.com/jfernandesdev/react-firebase-auth/blob/6e18ff299451f20fd2813fa3b5bc84d5dcce0317/public/layout/home.png" /> |
+
 ### Mobile e Tablet (screenshot):
+
+| Login                                                                                                                                                         | Register                                                                                                                                                         | Reset Password                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://github.com/jfernandesdev/react-firebase-auth/blob/6e18ff299451f20fd2813fa3b5bc84d5dcce0317/public/layout/login-mobile.png" width='300px' /> | <img src="https://github.com/jfernandesdev/react-firebase-auth/blob/6e18ff299451f20fd2813fa3b5bc84d5dcce0317/public/layout/register-mobile.png" width='300px' /> | <img src="https://github.com/jfernandesdev/react-firebase-auth/blob/6e18ff299451f20fd2813fa3b5bc84d5dcce0317/public/layout/reset-password-mobile.png" width='300px' /> |
 
 ### Dê uma olhada como o projeto ficou! 👀
 
