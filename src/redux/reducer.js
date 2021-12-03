@@ -14,6 +14,7 @@ const userReducer = (state = initialState, action) => {
     case types.LOGOUT_START:
     case types.GOOGLE_SIGN_IN_START:
     case types.FACEBOOK_SIGN_IN_START:
+    case types.RESET_PASSWORD_START:
       return {
         ...state,
         loading: true,  
@@ -22,7 +23,7 @@ const userReducer = (state = initialState, action) => {
     case types.REGISTER_SUCCESS:
     case types.LOGIN_SUCCESS:
     case types.GOOGLE_SIGN_IN_SUCCESS:
-    case types.FACEBOOK_SIGN_IN_SUCCESS:      
+    case types.FACEBOOK_SIGN_IN_SUCCESS: 
       return {
         ...state,
         loading: false,
@@ -30,6 +31,7 @@ const userReducer = (state = initialState, action) => {
       };
 
     case types.LOGOUT_SUCCESS:
+    case types.RESET_PASSWORD_SUCCESS: 
       return {
         ...state,
         currentUser: null,
@@ -48,6 +50,7 @@ const userReducer = (state = initialState, action) => {
     case types.LOGOUT_FAIL:
     case types.GOOGLE_SIGN_IN_FAIL:
     case types.FACEBOOK_SIGN_IN_FAIL:
+    case types.RESET_PASSWORD_FAIL:
       return {
         ...state,
         loading: false,

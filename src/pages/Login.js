@@ -89,7 +89,7 @@ const Login = () => {
               <label htmlFor="remember">Lembrar-me</label>
             </Flex>
 
-            <a href='#'>Esqueceu sua senha?</a>
+            <Link to='/reset-password'><a>Esqueceu sua senha?</a></Link>
           </WrapWithSpace>
 
           <Button type='submit'>Entrar</Button>

@@ -28,6 +28,11 @@ export default styled.button`
     filter: brightness(0.95);
   }
 
+  &:disabled {
+    filter: brightness(1);
+    cursor: not-allowed;
+  }
+
   @media(max-width: 768px) {
     min-width: 100px;
     padding: 10px 20px;

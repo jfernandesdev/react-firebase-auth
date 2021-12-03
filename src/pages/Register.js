@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
   const [state, setState] = useState({
-    name: "",
+    displayName: "",
     email: "",
     password: "",
     passwordConfirm: "",

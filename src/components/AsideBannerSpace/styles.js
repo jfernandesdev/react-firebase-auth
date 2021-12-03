@@ -33,9 +33,15 @@ export const Container = styled.div`
 `;
 
 export const Image = styled.img`
-  animation: float 10s ease-in-out infinite;
+  :not(.noAnimation) {
+    animation: float 10s ease-in-out infinite;
+  }
   margin-top: 100px;
 
+  &.noAnimation {
+    padding: 30px;
+  }
+  
   @media(max-width: 768px) {
     position: absolute;
     width: 30%;

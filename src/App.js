@@ -5,6 +5,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ResetPassword from './pages/ResetPassword';
+
 import UserRoute from './components/UserRoute';
 
 import { auth } from './firebase';
@@ -30,6 +32,7 @@ function App() {
         <UserRoute exact path="/" component={Home} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/reset-password" component={ResetPassword} />
       </Switch>
     </BrowserRouter>
   );

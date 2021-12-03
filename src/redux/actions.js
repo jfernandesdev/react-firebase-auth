@@ -200,3 +200,51 @@ export const facebookSignInInitiate = () => {
       });
   }
 }
+
+
+//login functions for reset password
+// functions for logout
+const resetPasswordStart = () => ({
+  type: types.RESET_PASSWORD_START,
+});
+
+const resetPasswordSuccess = () => ({
+  type: types.RESET_PASSWORD_SUCCESS,
+});
+
+const resetPasswordFail = (error) => ({
+  type: types.RESET_PASSWORD_FAIL,
+  payload: error,
+});
+
+export const resetPasswordInitiate = (email, config) => {
+  return function (dispatch) {
+    dispatch(resetPasswordStart());
+    auth
+    .sendPasswordResetEmail(email, config)
+    .then((resp) => {
+      dispatch(resetPasswordSuccess())
+      toast.success('E-mail de recuperação enviado com sucesso!', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    })
+    .catch((error) => {
+      dispatch(resetPasswordFail(error.code));
+      toast.error(verifyErroCode(error.code), {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    });
+  }
+}
