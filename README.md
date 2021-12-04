@@ -39,7 +39,7 @@ Projeto Web desenvolvido para fins didáticos. TEMA: 'Fluxo de autenticação: C
 
 ### Dê uma olhada como o projeto ficou! 👀
 
-(Em breve ...)
+https://react-firebase-auth-jfernandesdev.vercel.app
 
 <br>
 
