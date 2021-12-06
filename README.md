@@ -21,6 +21,8 @@ Projeto Web desenvolvido para fins didáticos. TEMA: 'Fluxo de autenticação: C
 
 ## Layout (by @jfernandesdev)🤩
 
+Layout disponível no Figma: https://www.figma.com/file/MGneARekjqOgwWzSbkAbNY/login-registration-and-reset-password
+
 ### Desktop (screenshot):
 
 | Login                                                                                                                                    | Register                                                                                                                                    |
